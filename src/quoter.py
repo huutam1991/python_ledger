@@ -5,6 +5,7 @@ import time
 from src.authen import send_binance_request
 from src.top_orderbook import top_orderbook
 from src.order_data_stream import order_data_stream
+from src.positions import positions
 
 class quoter():
     def __init__(self, account_type, trade_config, api_credentials):
@@ -53,12 +54,16 @@ class quoter():
 
             self.top_orderbook.stop()
             self.order_data_stream.stop()
+            self.positions.stop()
 
         # get top orderbook stream data
         self.top_orderbook = top_orderbook(self.account_type, self.order_config['symbol']).run()
 
         # order data stream
         self.order_data_stream = order_data_stream(self.account_type, self.api_credentials, self.update_order_status).run()
+
+        # position
+        self.positions = positions(self.account_type, self.api_credentials, self.order_config['symbol']).run()
 
         # start placing order
         thread = threading.Thread(target=run_on_thread, args=(self,))

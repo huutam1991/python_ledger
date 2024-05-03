@@ -1,15 +1,15 @@
 {
     "spot": {
-        "symbol": "ETHUSDT",
-        "quantity": 0.008,
+        "symbol": "CVXUSDT",
+        "quantity": 5,
         "side": "BUY",
         "type": "LIMIT",
         "timeInForce": "IOC",
         "delay_time": 0.9
     },
     "perpetual": {
-        "symbol": "ETHUSDT",
-        "quantity": 0.008,
+        "symbol": "CVXUSDT",
+        "quantity": 5,
         "side": "SELL",
         "type": "LIMIT",
         "timeInForce": "IOC",
